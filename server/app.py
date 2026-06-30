@@ -27,7 +27,9 @@ def index_articles():
 
 @app.route('/articles/<int:id>')
 def show_article(id):
-    pass
+    if session ["page_views"] >=3:
+        return clear_session()
+    session['page_views'] += 1
 
 
 if __name__ == '__main__':
