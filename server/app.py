@@ -31,8 +31,9 @@ def show_article(id):
             session['page_views'] = 0
     session['page_views'] += 1
 
-    if session['page_views'] >=3:
+    if session['page_views'] > 3:
          return jsonify({'message': 'Maximum pageview limit reached'}), 401
+    
     article = Article.query.get_or_404(id)
     return jsonify(ArticleSchema().dump(article))
     
